@@ -18,6 +18,13 @@ target_include_directories(helloworld PUBLIC
                           "${PROJECT_BINARY_DIR}"
                           )
 
+target_link_libraries(
+                      helloworld_test
+                      gtest
+                      gtest_main
+                      pthread
+                      )
+
 enable_testing()
 add_test(helloworld_test test)
 
