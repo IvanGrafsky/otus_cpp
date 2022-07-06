@@ -1,9 +1,9 @@
 #include <iostream>
-
 #include <gtest/gtest.h>
+#include "lib.h"
 
 TEST(VersionTest, CheckVersion) {
-  ASSERT_EQ(0, 0);
+  ASSERT_TRUE(version() > 0);
 }
 
 int main(int argc, char **argv){
