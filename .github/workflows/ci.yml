@@ -17,6 +17,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - run: pwd
+    - run: ls -l
     - run: cmake . -B build/
     - run: cmake --build -B build/
     
