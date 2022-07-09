@@ -1,8 +1,11 @@
-name: CI
+name: CI-homework1
 
 on:
   push:
-    branches: [ "homework1" ]
+    paths:
+      - homework1
+    tags:
+      - '*'
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
