@@ -9,7 +9,7 @@ env:
   BUILD_TYPE: Release
 
 jobs:
-  build:
+  main:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -21,17 +21,9 @@ jobs:
     - name: CMake build
       working-directory: homework1/build
       run: cmake --build .
-  test:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
     - name: Run Tests
       working-directory: homework1/build
       run: ./helloworld_test
-  deploy:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - name: Create deb packet
-        working-directory: homework1/build
-        run: echo "Hello, Deploy"
+    - name: Create deb packet
+      working-directory: homework1/build
+      run: echo "Hello, Deploy"
