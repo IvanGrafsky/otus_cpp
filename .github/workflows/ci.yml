@@ -15,6 +15,8 @@ jobs:
     - uses: actions/checkout@v3
     - name: GTest Install
       run: sudo apt install libgtest-dev
+    - name: CMake build num
+      run: cmake . -DPATCH_VERSION=${{ github.run_number }}
     - name: CMake init
       working-directory: homework1
       run: cmake . -B ./build/
@@ -26,4 +28,14 @@ jobs:
       run: ./helloworld_test
     - name: Create deb packet
       working-directory: homework1/build
-      run: echo "Hello, Deploy"
+      run: cmake --build . --target package
+    - name: Upload package
+      id: upload-release-asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./helloworld-0.0.${{ github.run_number }}-Linux.deb
+        asset_name: helloworld-0.0.${{ github.run_number }}-Linux.deb
+        asset_content_type: application/vnd.debian.binary-package
