@@ -1,6 +1,7 @@
+#include <iostream>
+
 #include "ip_lib.h"
 
-#include <iostream>
 
 void Print(const Ip& ip){
     std::cout << static_cast<int>(std::get<0>(ip)) << ".";
