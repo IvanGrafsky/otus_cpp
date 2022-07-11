@@ -7,6 +7,7 @@
 using Ip = std::tuple<uint8_t, uint8_t, uint8_t, uint8_t>;
 
 Ip get_ip(const std::string &str);
+
 void Print(const Ip& ip);
 void Print(const std::vector<Ip>& ip);
 
