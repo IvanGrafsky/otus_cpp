@@ -3,10 +3,16 @@
 #include <iostream>
 
 void Print(const Ip& ip){
-    std::cout << static_cast<uint8_t>(std::get<0>(ip)) << ".";
-    std::cout << static_cast<uint8_t>(std::get<1>(ip)) << ".";
-    std::cout << static_cast<uint8_t>(std::get<2>(ip)) << ".";
-    std::cout << static_cast<uint8_t>(std::get<3>(ip)) << std::endl;
+    std::cout << static_cast<int>(std::get<0>(ip)) << ".";
+    std::cout << static_cast<int>(std::get<1>(ip)) << ".";
+    std::cout << static_cast<int>(std::get<2>(ip)) << ".";
+    std::cout << static_cast<int>(std::get<3>(ip)) << std::endl;
+}
+
+void Print(const std::vector<Ip>& ip_pool){
+    for(const auto& ip : ip_pool){
+        Print(ip);
+    }
 }
 
 Ip get_ip(const std::string &str){

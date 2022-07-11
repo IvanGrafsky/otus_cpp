@@ -21,7 +21,18 @@ target_link_libraries(ip_filter_test PUBLIC
   pthread
 )
 
+target_include_directories(ip_filter PUBLIC
+  "${PROJECT_SOURCE_DIR}/ip_lib"
+)
+
 target_include_directories(ip_filter_test PUBLIC
   "${PROJECT_SOURCE_DIR}/ip_lib"
 )
 
+target_compile_options(ip_filter PUBLIC
+  -Wall -Wextra -pedantic -Werror
+)
+
+target_compile_options(ip_filter_test PUBLIC
+  -Wall -Wextra -pedantic -Werror
+)
