@@ -4,34 +4,7 @@
 #include <string>
 #include <vector>
 #include <tuple>
-// #include <gtest/gtest.h>
 
-
-
-// ("",  '.') -> [""]
-// ("11", '.') -> ["11"]
-// ("..", '.') -> ["", "", ""]
-// ("11.", '.') -> ["11", ""]
-// (".11", '.') -> ["", "11"]
-// ("11.22", '.') -> ["11", "22"]
-std::vector<std::string> split(const std::string &str, char d)
-{
-    std::vector<std::string> r;
-
-    std::string::size_type start = 0;
-    std::string::size_type stop = str.find_first_of(d);
-    while(stop != std::string::npos)
-    {
-        r.push_back(str.substr(start, stop - start));
-
-        start = stop + 1;
-        stop = str.find_first_of(d, start);
-    }
-
-    r.push_back(str.substr(start));
-
-    return r;
-}
 
 // int main(int argc, char const *argv[])
 // {
@@ -132,106 +105,11 @@ std::vector<std::string> split(const std::string &str, char d)
 //     return 0;
 // }
 
-
-using Ip = std::tuple<uint8_t, uint8_t, uint8_t, uint8_t>;
-
-Ip get_ip(const std::string &str){
-    const char point = '.';
-    const uint8_t ip_byte_num = 4;
-
-    std::string::size_type start = 0;
-    std::string::size_type stop = str.find_first_of(point);
-
-    int ip_part[ip_byte_num];
-
-    for(size_t i = 0; i < ip_byte_num; i++){
-        ip_part[i] = atoi(str.substr(start, stop - start).c_str());
-
-        start = stop + 1;
-        stop = str.find_first_of(point, start);
-    }
-
-    return Ip(ip_part[0], ip_part[1], ip_part[2], ip_part[3]);
-}
-
-// TEST(IpFilter, GetIp) {
-//   ASSERT_TRUE(1);
-// }
-
-void Print(const Ip& ip){
-    std::cout << static_cast<uint8_t>(std::get<0>(ip)) << ".";
-    std::cout << static_cast<uint8_t>(std::get<1>(ip)) << ".";
-    std::cout << static_cast<uint8_t>(std::get<2>(ip)) << ".";
-    std::cout << static_cast<uint8_t>(std::get<3>(ip)) << std::endl;
-}
-
-std::vector<Ip> filter(const std::vector<Ip>& ip_pool, uint8_t first_byte);
-std::vector<Ip> filter(const std::vector<Ip>& ip_pool, uint8_t first_byte, uint8_t second_byte);
-std::vector<Ip> filter_any(const std::vector<Ip>& ip_pool, uint8_t any_byte);
-
-
-std::vector<Ip> filter(const std::vector<Ip>& ip_pool, uint8_t first_byte){
-    std::vector<Ip> result;
-
-    for(const auto& ip : ip_pool){
-        if(std::get<0>(ip) == first_byte){
-            result.push_back(ip);
-        }
-    }
-
-    return result;
-}
-
-std::vector<Ip> filter(const std::vector<Ip>& ip_pool, uint8_t first_byte, uint8_t second_byte){
-    std::vector<Ip> result;
-
-    for(const auto& ip : ip_pool){
-        if((std::get<0>(ip) == first_byte) && (std::get<1>(ip) == second_byte)){
-            result.push_back(ip);
-        }
-    }
-
-    return result;
-}
-
-// std::vector<Ip> filter_any(const std::vector<Ip>& ip_pool, uint8_t any_byte){
-//     std::vector<Ip> result;
-
-
-//     for(size_t i = 0; i < 4; i++){
-
-//     }
-//     // for(const auto& ip : ip_pool){
-
-//     // }
-
-//     return result;
-// }
-
 int main(int argc, char **argv){
-    //::testing::InitGoogleTest(&argc, argv);
 
-    Ip a;
-
-    a = get_ip("92.168.1.145 8 3");
-    Print(a);
-
-    a = get_ip("117.241.3.153	2	4");
-    Print(a);
-    a = get_ip("86.146.190.166	1	0");
-    Print(a);
-    a = get_ip("68.60.148.11	1	0");
-    Print(a);
-    a = get_ip("89.146.70.220	0	1");
-    Print(a);
-
-    return 0;//RUN_ALL_TESTS();
+    return 0;
 }
 
-
-// get ip from string
-// sort ip in reverse
-// filter ip
 
 
 
