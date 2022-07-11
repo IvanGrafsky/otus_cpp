@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(ip_filter)
+set(BUILD_VERSION "44" CACHE INTERNAL "Patch version")
+set(PROJECT_VERSION ${BUILD_VERSION})
+
+project(ip_filter VERSION ${PROJECT_VERSION})
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
