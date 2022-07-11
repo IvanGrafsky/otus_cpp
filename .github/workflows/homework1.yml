@@ -3,7 +3,7 @@ name: CI-homework1
 on:
   push:
     paths:
-      - homework1
+      - 01_homework
     tags:
       - '*'
 
