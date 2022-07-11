@@ -17,7 +17,7 @@ jobs:
       run: sudo apt install libgtest-dev
     - name: CMake init
       working-directory: 02_homework
-      run: cmake . -B ./build/
+      run: cmake . -DBUILD_VERSION=${{ github.run_number }} -B ./build/
     - name: CMake build
       working-directory: 02_homework/build
       run: cmake --build .
