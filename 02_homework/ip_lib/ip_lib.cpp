@@ -53,7 +53,23 @@ std::vector<Ip> filter(const std::vector<Ip>& ip_pool, uint8_t first_byte, uint8
 }
 
 std::vector<Ip> filter_any(const std::vector<Ip>& ip_pool, uint8_t any_byte){
-  std::vector<Ip> result;
+    std::vector<Ip> result;
 
-  return result;
+    for(const auto& ip : ip_pool){
+        if((std::get<0>(ip) == any_byte) ||
+            (std::get<1>(ip) == any_byte) ||
+            (std::get<2>(ip) == any_byte) ||
+            (std::get<3>(ip) == any_byte)){
+                result.push_back(ip);
+            }
+
+        // for(auto x: ip){
+        //     if(x == any_byte){
+        //         result.push_back(ip);
+        //         break;
+        //     }
+        // }
+    }
+
+    return result;
 }
