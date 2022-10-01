@@ -2,7 +2,7 @@
 #include <cstring>
 #include <iostream>
 
-template <typename T, size_t size = 100>
+template <typename T, size_t Size = 100>
 class my_allocator{
 public:
   using value_type = T;
@@ -51,6 +51,8 @@ public:
   }
 
   void deallocate(T* p, std::size_t n){
+    (void)p;
+    (void)n;
     std::cout << "Deallocating " << sizeof(T) * n << " bytes" << std::endl;
   }
 
@@ -62,7 +64,7 @@ public:
     }
   }
 private:
-  static constexpr size_t size_ = size;
+  static constexpr size_t size_ = Size;
   T* mem_start_ptr_;
   size_t free_offset_;
 };
