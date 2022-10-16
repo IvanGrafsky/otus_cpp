@@ -44,3 +44,12 @@ jobs:
         asset_path: ./04_homework/build/template_test-0.0.${{ github.run_number }}-Linux.deb
         asset_name: template_test-0.0.${{ github.run_number }}-Linux.deb
         asset_content_type: application/vnd.debian.binary-package
+    - name: GH Pages Deployment
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./04_homework/print_lib/doc/html/
+        enable_jekyll: false
+        allow_empty_commit: false
+        force_orphan: true
+        publish_branch: gh-pages
