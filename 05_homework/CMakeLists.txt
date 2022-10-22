@@ -23,3 +23,15 @@ target_link_libraries(graph_engine PUBLIC
 target_compile_options(graph_engine PUBLIC
   -Wall -Wextra -pedantic -Werror
 )
+
+install(TARGETS graph_engine
+  RUNTIME DESTINATION bin
+)
+
+set(CPACK_GENERATOR DEB)
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER IG)
+set(CPACK_PACKAGE_VERSION_MAJOR 0)
+set(CPACK_PACKAGE_VERSION_MINOR 0)
+set(CPACK_PACKAGE_VERSION_PATCH ${BUILD_VERSION})
+set(CPACK_PACKAGE_CONTACT example@example.com)
+include(CPack)
