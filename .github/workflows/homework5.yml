@@ -2,8 +2,8 @@ name: CI-homework5
 
 on:
   push:
-    paths:
-      - 05_homework
+    branches:
+      - master
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
