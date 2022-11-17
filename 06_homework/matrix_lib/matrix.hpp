@@ -113,7 +113,6 @@ class Cell{
     }
   }
 
-
  private:
   size_t x_pos_;
   size_t y_pos_;
@@ -137,12 +136,15 @@ class HorizCellStorage{
       return tmp->second;
     } else {
       auto t = storage.emplace(std::make_pair(s, Cell<T, def>(s, 0, cl)));
+      clean_ = true;
+      clean_pos_ = s;
       return t.first->second;
     }
   }
 
   size_t size() const{
     ExecuteCleaning();
+    std::cout << "Internal size " << storage.size() << std::endl;
     return size_;
   }
 
@@ -170,11 +172,15 @@ class HorizCellStorage{
 
   void DeleteCell(size_t pos) const {
     std::cout << "In deleting cell" << std::endl;
+    std::cout << "Storage size before " << storage.size() << std::endl;
     auto it = storage.find(pos);
     if(it != storage.end()){
       std::cout << "Found " << std::endl;
-      storage.erase(it);
+      if(it->second == def){
+        storage.erase(it);
+      }
     }
+     std::cout << "Storage size after " << storage.size() << std::endl;
   }
 
   void IncrementSize(){
