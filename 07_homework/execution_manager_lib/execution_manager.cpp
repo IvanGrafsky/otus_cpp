@@ -1,4 +1,5 @@
 #include "execution_manager.h"
+#include "../command_lib/command.h"
 
   ExecutionManager::ExecutionManager(CommandExecutor& exec,
                                       size_t bulk_size) : exec_(exec),

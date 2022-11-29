@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 
-#include "command.h"
+#include "../command_lib/command.h"
 
 #pragma once
 
