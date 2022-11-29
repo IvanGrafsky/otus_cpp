@@ -1,0 +1,5 @@
+add_library(command_executor_lib command_executor.cpp)
+
+target_compile_options(command_executor_lib PUBLIC
+  -Wall -Wextra -pedantic -Werror
+)
