@@ -4,17 +4,20 @@
 #include "logger.h"
 
 int main(int argc, char** argv){
-  if(argc <= 1){
-    return -1;
+  try{
+
+    if(argc <= 1){
+      throw std::invalid_argument("number of args less than 1");
+    }
+    auto logger = Logger::GetInstance();
+    CommandExecutor executor(logger);
+    ExecutionManager manager(executor, std::stoi(argv[1]));
+    manager.ExecutionLoop(std::cin);
+
+  } catch(const std::exception &e){
+    std::cout << "Something went wrong: " << e.what() << std::endl;
+    return EXIT_FAILURE;
   }
 
-  auto logger = Logger::GetInstance();
-
-  CommandExecutor executor(logger);
-
-  ExecutionManager manager(executor, std::stoi(argv[1]));
-
-  manager.ExecutionLoop(std::cin);
-
-  return 0;
+  return EXIT_SUCCESS;
 }
