@@ -11,6 +11,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 add_subdirectory(command_lib)
 add_subdirectory(command_executor_lib)
 add_subdirectory(execution_manager_lib)
+add_subdirectory(logger_lib)
 
 add_executable(bulk bulk.cpp)
 
@@ -18,12 +19,14 @@ target_link_libraries(bulk PUBLIC
   command_lib
   command_executor_lib
   execution_manager_lib
+  logger_lib
 )
 
 target_include_directories(bulk PUBLIC
  "${PROJECT_SOURCE_DIR}/command_lib"
  "${PROJECT_SOURCE_DIR}/command_executor_lib"
  "${PROJECT_SOURCE_DIR}/execution_manager_lib"
+ "${PROJECT_SOURCE_DIR}/logger_lib"
 )
 
 target_compile_options(bulk PUBLIC

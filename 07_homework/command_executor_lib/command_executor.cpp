@@ -4,9 +4,18 @@
 int CommandExecutor::ExecuteCommands(std::vector<Command>& v){
   int result = 0;
 
-  for(auto& c : v){
-    result += ExecuteCommand(c);
+  if(!v.empty()){
+    log_->Log("bulk: ");
   }
+
+  for(size_t i = 0; i < v.size(); i++){
+    log_->Log(v[i].GetName());
+    if(i != v.size() - 1){
+      log_->Log(", ");
+    }
+    result += ExecuteCommand(v[i]);
+  }
+
   return result;
 }
 
