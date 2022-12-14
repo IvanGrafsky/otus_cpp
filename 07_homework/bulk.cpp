@@ -9,8 +9,8 @@ int main(int argc, char** argv){
     if(argc <= 1){
       throw std::invalid_argument("number of args less than 1");
     }
-    auto logger = Logger::GetInstance();
-    CommandExecutor executor(logger);
+
+    CommandExecutor executor;
     ExecutionManager manager(executor, std::stoi(argv[1]));
     manager.ExecutionLoop(std::cin);
 

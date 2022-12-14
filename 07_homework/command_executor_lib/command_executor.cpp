@@ -7,7 +7,7 @@ int CommandExecutor::ExecuteCommands(std::vector<Command>& v){
   int result = 0;
 
   if(!v.empty()){
-    log_->Log("bulk: ");
+    LOG("bulk: ");
   } else {
     return result;
   }
@@ -16,12 +16,12 @@ int CommandExecutor::ExecuteCommands(std::vector<Command>& v){
   file.open("bulk" + std::to_string(v[0].GetTime()) + ".log");
 
   for(size_t i = 0; i < v.size(); i++){
-    log_->Log(v[i].GetName());
+    LOG(v[i].GetName());
     file << v[i].GetName() << std::endl;
     if(i != v.size() - 1){
-      log_->Log(", ");
+      LOG(", ");
     } else {
-      log_->Log("\n");
+      LOG("\n");
     }
     result += ExecuteCommand(v[i]);
   }

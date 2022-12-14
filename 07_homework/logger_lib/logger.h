@@ -2,6 +2,8 @@
 
 #pragma once
 
+#define LOG(msg) Logger::GetInstance()->Log(msg);
+
 class Logger{
  public:
   Logger(Logger&) = delete;
